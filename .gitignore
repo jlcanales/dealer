@@ -15,6 +15,13 @@
 *.o
 *.so
 
+# Package Files #
+#################
+*.jar
+*.war
+*.ear
+
+
 # Logs and databases #
 ######################
 *.log
