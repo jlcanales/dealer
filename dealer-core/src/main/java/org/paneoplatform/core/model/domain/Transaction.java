@@ -26,4 +26,110 @@ package org.paneoplatform.core.model.domain;
  */
 public class Transaction {
 
+	/**
+	 * Transaction unique ID
+	 */
+	private String transac_id;
+	
+	/**
+	 * Global Correlation ID
+	 */
+	private String correlation_id;
+	
+	/**
+	 * Conversation Correlation ID
+	 */
+	private String breadcrumb_id;
+	
+	/**
+	 * Transaction source login
+	 */
+	private String origin;
+	
+	/**
+	 * Transaction destination login
+	 */
+	private String destination;
+	
+	/**
+	 * Origin geolocation x coordinate
+	 */
+	private double x_coord_from;
+	
+	/**
+	 * Origin geolocation y coordinate
+	 */
+	private double y_coord_from;
+	
+	/**
+	 * Transaction body
+	 */
+	private String body;
+
+	public String getTransac_id() {
+		return transac_id;
+	}
+
+	public void setTransac_id(String transac_id) {
+		this.transac_id = transac_id;
+	}
+
+	public String getCorrelation_id() {
+		return correlation_id;
+	}
+
+	public void setCorrelation_id(String correlation_id) {
+		this.correlation_id = correlation_id;
+	}
+
+	public String getBreadcrumb_id() {
+		return breadcrumb_id;
+	}
+
+	public void setBreadcrumb_id(String breadcrumb_id) {
+		this.breadcrumb_id = breadcrumb_id;
+	}
+
+	public String getOrigin() {
+		return origin;
+	}
+
+	public void setOrigin(String origin) {
+		this.origin = origin;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+
+	public double getX_coord_from() {
+		return x_coord_from;
+	}
+
+	public void setX_coord_from(double x_coord_from) {
+		this.x_coord_from = x_coord_from;
+	}
+
+	public double getY_coord_from() {
+		return y_coord_from;
+	}
+
+	public void setY_coord_from(double y_coord_from) {
+		this.y_coord_from = y_coord_from;
+	}
+
+	public String getBody() {
+		return body;
+	}
+
+	public void setBody(String body) {
+		this.body = body;
+	}
+	
+	
+	
 }
