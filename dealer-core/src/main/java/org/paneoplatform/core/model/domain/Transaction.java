@@ -31,7 +31,7 @@ public class Transaction {
 	/**
 	 * Transaction unique ID
 	 */
-	private UUID transac_id;
+	private String transac_id;
 	
 	/**
 	 * Global Correlation ID
@@ -68,11 +68,11 @@ public class Transaction {
 	 */
 	private String body;
 
-	public UUID getTransac_id() {
+	public String getTransac_id() {
 		return transac_id;
 	}
 
-	public void setTransac_id(UUID transac_id) {
+	public void setTransac_id(String transac_id) {
 		this.transac_id = transac_id;
 	}
 

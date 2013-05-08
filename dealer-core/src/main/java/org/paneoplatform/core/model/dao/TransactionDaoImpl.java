@@ -28,11 +28,11 @@ import me.prettyprint.hector.api.Keyspace;
  *
  */
 public class TransactionDaoImpl extends
-		AbstractColumnFamilyDao<java.util.UUID, Transaction> implements
+		AbstractColumnFamilyDao<String, Transaction> implements
 		TransactionDao {
 
 	public TransactionDaoImpl(Keyspace keySpace) {
-		super(keySpace, java.util.UUID.class, Transaction.class, "transactions");
+		super(keySpace, String.class, Transaction.class, "transactions");
 	}
 
 	@Override

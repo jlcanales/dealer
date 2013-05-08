@@ -1,0 +1,7 @@
+#Instrucciones necesarias para ejecutar con cassandra-cli
+#Crea el modelo de columnfamily necesario para paneo
+
+
+create keyspace paneotrans with placement_strategy ='org.apache.cassandra.locator.SimpleStrategy' and strategy_options = {replication_factor:1}; 
+use paneotrans;
+create column family transactions with key_validation_class = 'UTF8Type' and comparator = 'UTF8Type' and default_validation_class = 'UTF8Type';
