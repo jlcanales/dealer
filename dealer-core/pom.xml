@@ -76,7 +76,7 @@
 						<additionalClasspathElement>${basedir}/src/test/resources</additionalClasspathElement>
 					</additionalClasspathElements>
 					<includes>
-						<include>tst/**/*Test.java</include>
+						<include>**/*Test.java</include>
 					</includes>
 					<systemProperties>
 						<property>
@@ -95,12 +95,12 @@
 
 		<testResources>
 			<testResource>
-				<targetPath>config</targetPath>
+				<targetPath>.</targetPath>
 				<filtering>false</filtering>
 				<directory>${basedir}/src/main/resources</directory>
 			</testResource>
 			<testResource>
-				<targetPath>config</targetPath>
+				<targetPath>.</targetPath>
 				<filtering>false</filtering>
 				<directory>${basedir}/src/test/resources</directory>
 			</testResource>
