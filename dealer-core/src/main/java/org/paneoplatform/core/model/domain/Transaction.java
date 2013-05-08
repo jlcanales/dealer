@@ -17,6 +17,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA}]
 */
 package org.paneoplatform.core.model.domain;
 
+import java.util.UUID;
+
 
 /**
  * Implement the Transaction Object definition.
@@ -29,7 +31,7 @@ public class Transaction {
 	/**
 	 * Transaction unique ID
 	 */
-	private String transac_id;
+	private UUID transac_id;
 	
 	/**
 	 * Global Correlation ID
@@ -66,11 +68,11 @@ public class Transaction {
 	 */
 	private String body;
 
-	public String getTransac_id() {
+	public UUID getTransac_id() {
 		return transac_id;
 	}
 
-	public void setTransac_id(String transac_id) {
+	public void setTransac_id(UUID transac_id) {
 		this.transac_id = transac_id;
 	}
 
@@ -128,6 +130,85 @@ public class Transaction {
 
 	public void setBody(String body) {
 		this.body = body;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((body == null) ? 0 : body.hashCode());
+		result = prime * result
+				+ ((breadcrumb_id == null) ? 0 : breadcrumb_id.hashCode());
+		result = prime * result
+				+ ((correlation_id == null) ? 0 : correlation_id.hashCode());
+		result = prime * result
+				+ ((destination == null) ? 0 : destination.hashCode());
+		result = prime * result + ((origin == null) ? 0 : origin.hashCode());
+		result = prime * result
+				+ ((transac_id == null) ? 0 : transac_id.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(x_coord_from);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(y_coord_from);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Transaction other = (Transaction) obj;
+		if (body == null) {
+			if (other.body != null)
+				return false;
+		} else if (!body.equals(other.body))
+			return false;
+		if (breadcrumb_id == null) {
+			if (other.breadcrumb_id != null)
+				return false;
+		} else if (!breadcrumb_id.equals(other.breadcrumb_id))
+			return false;
+		if (correlation_id == null) {
+			if (other.correlation_id != null)
+				return false;
+		} else if (!correlation_id.equals(other.correlation_id))
+			return false;
+		if (destination == null) {
+			if (other.destination != null)
+				return false;
+		} else if (!destination.equals(other.destination))
+			return false;
+		if (origin == null) {
+			if (other.origin != null)
+				return false;
+		} else if (!origin.equals(other.origin))
+			return false;
+		if (transac_id == null) {
+			if (other.transac_id != null)
+				return false;
+		} else if (!transac_id.equals(other.transac_id))
+			return false;
+		if (Double.doubleToLongBits(x_coord_from) != Double
+				.doubleToLongBits(other.x_coord_from))
+			return false;
+		if (Double.doubleToLongBits(y_coord_from) != Double
+				.doubleToLongBits(other.y_coord_from))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Transaction [transac_id=" + transac_id + ", correlation_id="
+				+ correlation_id + ", breadcrumb_id=" + breadcrumb_id
+				+ ", origin=" + origin + ", destination=" + destination
+				+ ", x_coord_from=" + x_coord_from + ", y_coord_from="
+				+ y_coord_from + ", body=" + body + "]";
 	}
 	
 	

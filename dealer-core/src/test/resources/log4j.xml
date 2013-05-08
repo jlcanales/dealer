@@ -4,27 +4,19 @@
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
 
    <appender name="Terminal" class="org.apache.log4j.ConsoleAppender">
-      <param name="Threshold" value="INFO"/>
+      <param name="Threshold" value="DEBUG"/>
       <param name="Target" value="System.out"/>
       <layout class="org.apache.log4j.PatternLayout">
          <param name="ConversionPattern" value="[%30.30t] %-30.30c{1} %-5p %m%n"/>
       </layout>
-   </appender>
+   </appender> 
 
-
-  <!--  ### Uncomment ALL for iBATIS logging -->
-<!-- 
-    <logger name="java.sql">
-        <level value="debug" />
-    </logger>
-
-    <logger name="org.apache.ibatis">
-        <level value="debug" />
-    </logger>
-    <logger name="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <level value="debug" />
-    </logger>
--->  
+	<!-- *********************************************** -->
+	<!-- Abstract DAO Log config -->
+	<!-- *********************************************** -->
+	<logger name="org.paneoplatform.core.model.dao.AbstractColumnFamilyDao">
+		<level value="DEBUG" />
+	</logger>
 
     <root>
        <level value="INFO" />
