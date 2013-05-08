@@ -18,6 +18,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA}]
 package org.paneoplatform.core.model.dao;
 
 import org.paneoplatform.core.model.domain.Transaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import me.prettyprint.hector.api.Keyspace;
 
@@ -28,11 +30,15 @@ import me.prettyprint.hector.api.Keyspace;
  *
  */
 public class TransactionDaoImpl extends
-		AbstractColumnFamilyDao<String, Transaction> implements
+		AbstractColumnFamilyDao<java.util.UUID, Transaction> implements
 		TransactionDao {
 
+	private static Logger  log = LoggerFactory.getLogger(TransactionDaoImpl.class);
+	
+	private static final String TRANSACTIONS_COLUMN_FAMILY = "transactions";
+	
 	public TransactionDaoImpl(Keyspace keySpace) {
-		super(keySpace, String.class, Transaction.class, "transactions");
+		super(keySpace, java.util.UUID.class, Transaction.class, TRANSACTIONS_COLUMN_FAMILY);
 	}
 
 	@Override

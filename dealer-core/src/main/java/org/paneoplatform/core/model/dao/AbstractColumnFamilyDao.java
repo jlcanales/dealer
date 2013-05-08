@@ -6,6 +6,9 @@
  */
 package org.paneoplatform.core.model.dao;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import me.prettyprint.cassandra.serializers.BytesArraySerializer;
 import me.prettyprint.cassandra.serializers.SerializerTypeInferer;
 import me.prettyprint.cassandra.serializers.StringSerializer;
@@ -30,6 +33,7 @@ import me.prettyprint.hector.api.query.SliceQuery;
  */
 public abstract class AbstractColumnFamilyDao<KeyType, T> {
 
+	private static Logger  log = LoggerFactory.getLogger(AbstractColumnFamilyDao.class);
 	/**
 	 * Class Type for POJO object that represents a Row in the Column Family
 	 */
@@ -79,6 +83,7 @@ public abstract class AbstractColumnFamilyDao<KeyType, T> {
 	 */
 	public void save(KeyType key, T model) {
 
+		log.debug("Saving row : key-> {} ; Row->{}", key, model.toString());
 		Mutator<Object> mutator = HFactory.createMutator(keySpace,
 				SerializerTypeInferer.getSerializer(keyTypeClass));
 		for (HColumn<?, ?> column : DaoHelper.getColumns(model)) {
@@ -94,6 +99,8 @@ public abstract class AbstractColumnFamilyDao<KeyType, T> {
 	 * @return Object that store row content.
 	 */
 	public T find(KeyType key) {
+		log.debug("Searching row for key: {}", key);
+		
 		SliceQuery<Object, String, byte[]> query = HFactory.createSliceQuery(
 				keySpace, SerializerTypeInferer.getSerializer(keyTypeClass),
 				StringSerializer.get(), BytesArraySerializer.get());
@@ -103,12 +110,15 @@ public abstract class AbstractColumnFamilyDao<KeyType, T> {
 				.setColumnNames(allColumnNames).execute();
 
 		if (result.get().getColumns().size() == 0) {
+			log.debug("No Result found ");
 			return null;
 		}
 
 		try {
 			T t = persistentClass.newInstance();
 			DaoHelper.populateEntity(t, result);
+			
+			log.debug("Result found: {} ",t);
 			return t;
 		} catch (Exception e) {
 			throw new RuntimeException("Error creating persistent class", e);
@@ -120,6 +130,7 @@ public abstract class AbstractColumnFamilyDao<KeyType, T> {
 	 * @param key Key that identify row to be deleted
 	 */
 	public void delete(KeyType key) {
+		log.debug("Deleting row for key: {}", key);
 		Mutator<Object> mutator = HFactory.createMutator(keySpace,
 				SerializerTypeInferer.getSerializer(keyTypeClass));
 		mutator.delete(key, columnFamilyName, null,
