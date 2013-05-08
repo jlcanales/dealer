@@ -17,6 +17,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA}]
 */
 package org.paneoplatform.core.model.domain;
 
+import com.eaio.uuid.UUID;
+
 
 /**
  * Implement the Transaction Object definition.
@@ -29,7 +31,7 @@ public class Transaction {
 	/**
 	 * Transaction unique ID
 	 */
-	private String transac_id;
+	private UUID transac_id;
 	
 	/**
 	 * Global Correlation ID
@@ -66,11 +68,11 @@ public class Transaction {
 	 */
 	private String body;
 
-	public String getTransac_id() {
+	public UUID getTransac_id() {
 		return transac_id;
 	}
 
-	public void setTransac_id(String transac_id) {
+	public void setTransac_id(UUID transac_id) {
 		this.transac_id = transac_id;
 	}
 

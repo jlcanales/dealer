@@ -15,6 +15,11 @@
 
 	<dependencies>
 
+			<dependency>
+				<groupId>org.hectorclient</groupId>
+				<artifactId>hector-core</artifactId>
+			</dependency>
+			
 		<!-- Logging dependencies -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
