@@ -6,3 +6,6 @@ create keyspace paneotrans with placement_strategy ='org.apache.cassandra.locato
 use paneotrans;
 create column family transactions with key_validation_class = 'UUIDType' and comparator = 'UTF8Type' and default_validation_class = 'BytesType'
 and column_metadata = [ {column_name: transac_id, validation_class: UUIDType} {column_name: correlation_id, validation_class: UTF8Type} {column_name: breadcrumb_id, validation_class: UTF8Type} {column_name: origin, validation_class: UTF8Type} {column_name: destination, validation_class: UTF8Type} {column_name: x_coord_from, validation_class: DoubleType} {column_name: y_coord_from, validation_class: DoubleType} {column_name: body, validation_class: UTF8Type} ];
+
+create column family transactions with key_validation_class = 'UTF8Type' and comparator = 'UTF8Type' and default_validation_class = 'BytesType'
+and column_metadata = [ {column_name: transac_id, validation_class: UTF8Type} {column_name: correlation_id, validation_class: UTF8Type} {column_name: breadcrumb_id, validation_class: UTF8Type} {column_name: origin, validation_class: UTF8Type} {column_name: destination, validation_class: UTF8Type} {column_name: x_coord_from, validation_class: DoubleType} {column_name: y_coord_from, validation_class: DoubleType} {column_name: body, validation_class: UTF8Type} ];

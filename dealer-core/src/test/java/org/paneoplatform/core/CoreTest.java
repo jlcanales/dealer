@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.paneoplatform.core.model.dao.DaoHelper;
 import org.paneoplatform.core.model.dao.TransactionDao;
 import org.paneoplatform.core.model.domain.Transaction;
+import org.paneoplatform.core.uniqid.UniqueId;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -40,8 +41,9 @@ public class CoreTest extends TestCase {
 	public void saveTest(){
 		
 		Transaction testTransact = new Transaction();
+		 UniqueId uid = new UniqueId();
 		
-		testTransact.setTransac_id(DaoHelper.getTimeUUID());
+		testTransact.setTransac_id(uid.getStringId());
 		testTransact.setCorrelation_id("00001");
 		testTransact.setBreadcrumb_id("00002");
 		
@@ -60,8 +62,9 @@ public class CoreTest extends TestCase {
 	public void findTest(){
 		
 		Transaction testTransact = new Transaction();
-		
-		testTransact.setTransac_id(DaoHelper.getTimeUUID());
+		 UniqueId uid = new UniqueId();
+		 
+		testTransact.setTransac_id(uid.getStringId());
 		testTransact.setCorrelation_id("00001");
 		testTransact.setBreadcrumb_id("00002");
 		
@@ -84,14 +87,15 @@ public class CoreTest extends TestCase {
 		
 		for(int index = 0; index < 10000; index++){
 		Transaction testTransact = new Transaction();
-		
-		testTransact.setTransac_id(DaoHelper.getTimeUUID().toString());
+		 UniqueId uid = new UniqueId();
+		 
+		testTransact.setTransac_id(uid.getStringId());
 		testTransact.setCorrelation_id("00001");
 		testTransact.setBreadcrumb_id("00002");
 		
 		testTransact.setDestination("destination");
 		testTransact.setOrigin("origint");
-		testTransact.setBody("aaa");
+		testTransact.setBody(Integer.toString(index));
 		testTransact.setX_coord_from(0);
 		testTransact.setY_coord_from(0);
 		

@@ -42,12 +42,12 @@ public interface TransactionDao {
    * @param transaction_id Transaction ID for the object to be searched
    * @return Transaction found or 'null' if Transaction does not exits
    */
-  public Transaction find(UUID transaction_id);
+  public Transaction find(String transaction_id);
   
   /**
    * Delete the Transaction object identified by its
    * transaction_id
    * @param transaction_id Transaction Id for the object to be deleted
    */
-  public void delete(UUID transaction_id);
+  public void delete(String transaction_id);
 }

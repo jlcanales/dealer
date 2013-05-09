@@ -30,7 +30,7 @@ import me.prettyprint.hector.api.Keyspace;
  *
  */
 public class TransactionDaoImpl extends
-		AbstractColumnFamilyDao<java.util.UUID, Transaction> implements
+		AbstractColumnFamilyDao<String, Transaction> implements
 		TransactionDao {
 
 	private static Logger  log = LoggerFactory.getLogger(TransactionDaoImpl.class);
@@ -38,7 +38,7 @@ public class TransactionDaoImpl extends
 	private static final String TRANSACTIONS_COLUMN_FAMILY = "transactions";
 	
 	public TransactionDaoImpl(Keyspace keySpace) {
-		super(keySpace, java.util.UUID.class, Transaction.class, TRANSACTIONS_COLUMN_FAMILY);
+		super(keySpace, String.class, Transaction.class, TRANSACTIONS_COLUMN_FAMILY);
 	}
 
 	@Override
